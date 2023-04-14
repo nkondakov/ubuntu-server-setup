@@ -54,7 +54,11 @@ function main() {
 
     echo "Configuring System Time... " >&3
     configureNTP
+    echo "Istalling Docker..." >&3
     installDocker
+    echo "Istalling logrotate rsync ans support of M1 made Docker images..." >&3
+    finalTouches
+    echo "Restating SSH session..." >&3
     sudo service ssh restart
 
     cleanup
