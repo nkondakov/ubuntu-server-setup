@@ -178,3 +178,12 @@ function installDocker() {
     sudo groupadd docker
     sudo usermod -aG docker $USER
 }
+
+function finalTouches() {
+    sudo apt install -y logrotate
+    sudo apt install -y rsync
+    sudo touch /etc/rsyncd.conf # save and close it
+    sudo cp /lib/systemd/system/rsync.service /etc/systemd/system/rsync.service
+    sudo apt-get install -y qemu-user-static
+    sudo apt-get install -y binfmt-support
+}
