@@ -63,8 +63,7 @@ function changeSSHConfig() {
 function setupUfw() {
     sudo apt-get install ufw
     sudo ufw allow OpenSSH
-    sudo ufw allow HTTPS
-    sudo ufw allow HTTP
+    ufw allow 80,443/tcp
     ufw --force enable
 }
 
