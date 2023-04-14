@@ -54,7 +54,7 @@ function main() {
 
     echo "Configuring System Time... " >&3
     configureNTP
-
+    installDocker
     sudo service ssh restart
 
     cleanup
