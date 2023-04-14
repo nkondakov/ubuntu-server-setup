@@ -8,8 +8,10 @@ This is a setup script to automate the setup and provisioning of Ubuntu servers.
 * Deny root login to the server
 * Setup Uncomplicated Firewall
 * Create Swap file based on machine's installed memory
-* Setup the timezone for the server (Default to "Asia/Singapore")
+* Setup the timezone for the server (Default to "Europe/Moscow")
 * Install Network Time Protocol
+* Install Docker
+* Install Rsync and logrotate
 
 # Installation
 SSH into your server and install git if it is not installed:
