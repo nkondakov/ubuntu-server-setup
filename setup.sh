@@ -92,7 +92,7 @@ function setupTimezone() {
     echo -ne "Enter the timezone for the server (Default is 'Asia/Singapore'):\n" >&3
     read -r timezone
     if [ -z "${timezone}" ]; then
-        timezone="Asia/Singapore"
+        timezone="Europe/Moscow"
     fi
     setTimezone "${timezone}"
     echo "Timezone is set to $(cat /etc/timezone)" >&3
