@@ -18,32 +18,32 @@ includeDependencies
 output_file="output.log"
 
 function main() {
-    read -rp "Do you want to create a new non-root user? (Recommended) [Y/N] " createUser
+    # read -rp "Do you want to create a new non-root user? (Recommended) [Y/N] " createUser
 
     # Run setup functions
     trap cleanup EXIT SIGHUP SIGINT SIGTERM
 
-    if [[ $createUser == [nN] ]]; then
-        username=$(whoami)
-        updateUserAccount "${username}"
-    elif [[ $createUser == [yY] ]]; then
-        read -rp "Enter the username of the new user account: " username
-        addUserAccount "${username}"
-    else
-	echo 'This is not a valid choice!'
-	exit 1
-    fi
+    #if [[ $createUser == [nN] ]]; then
+    username=$(whoami)
+    updateUserAccount "${username}"
+    #elif [[ $createUser == [yY] ]]; then
+    #    read -rp "Enter the username of the new user account: " username
+    #    addUserAccount "${username}"
+    #else
+    #	echo 'This is not a valid choice!'
+    #	exit 1
+    #fi
 
-    read -rp $'Paste in the public SSH key for the new user:\n' sshKey
-    echo 'Running setup script...'
+    #read -rp $'Paste in the public SSH key for the new user:\n' sshKey
+    #echo 'Running setup script...'
     logTimestamp "${output_file}"
 
     exec 3>&1 >>"${output_file}" 2>&1
 
 
     disableSudoPassword "${username}"
-    addSSHKey "${username}" "${sshKey}"
-    changeSSHConfig
+    #addSSHKey "${username}" "${sshKey}"
+    #changeSSHConfig
     setupUfw
 
     if ! hasSwap; then
@@ -93,11 +93,11 @@ function logTimestamp() {
 }
 
 function setupTimezone() {
-    echo -ne "Enter the timezone for the server (Default is 'Europe/Moscow'):\n" >&3
-    read -r timezone
-    if [ -z "${timezone}" ]; then
-        timezone="Europe/Moscow"
-    fi
+    #echo -ne "Enter the timezone for the server (Default is 'Europe/Moscow'):\n" >&3
+    #read -r timezone
+    #if [ -z "${timezone}" ]; then
+    timezone="Europe/Moscow"
+    #fi
     setTimezone "${timezone}"
     echo "Timezone is set to $(cat /etc/timezone)" >&3
 }
